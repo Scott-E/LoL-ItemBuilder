@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">LoLItemBuilder</string>
+    <string name="app_name">LoL Item Builder</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
+    <string name="undo">Undo</string>
     
     <string name="costString">Cost:  0</string>
     <string name="healthString">Health:  0</string>

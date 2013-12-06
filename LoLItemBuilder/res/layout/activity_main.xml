@@ -1,146 +1,218 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".MainActivity"
-    android:orientation="vertical" >
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
     
-    <LinearLayout
-        android:id="@+id/stats"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical" >
-    
-	    <TextView
-	        android:id="@+id/cost"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:text="@string/costString" >
-	    </TextView>
+	<LinearLayout
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:paddingBottom="@dimen/activity_vertical_margin"
+	    android:paddingLeft="@dimen/activity_horizontal_margin"
+	    android:paddingRight="@dimen/activity_horizontal_margin"
+	    android:paddingTop="@dimen/activity_vertical_margin"
+	    tools:context=".MainActivity"
+	    android:orientation="vertical" >
 	    
-	    <TextView
-	        android:id="@+id/health"
+	    <LinearLayout
+	        android:id="@+id/selectionRow1"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
-	        android:text="@string/healthString" >
-	    </TextView>
+	        android:orientation="horizontal" >
+	        
+	        <ImageView
+	            android:id="@+id/item1"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:src="@drawable/image1" >
+	        </ImageView>
+	        
+	        <ImageView
+	            android:id="@+id/item2"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:src="@drawable/image1" >
+	        </ImageView>
+	        
+	        <ImageView
+	            android:id="@+id/item3"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:src="@drawable/image1" >
+	        </ImageView>
+	        
+	        <Button
+	            android:id="@+id/undo"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:onClick="undoListener"
+	            android:text="@string/undo" >
+	        </Button>
+	        
+	    </LinearLayout>
 	    
-	    <TextView
-	        android:id="@+id/healthRegen"
+	    <LinearLayout
+	        android:id="@+id/selectionRow1"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
-	        android:text="@string/healthRegenString" >
-	    </TextView>
+	        android:orientation="horizontal" >
+	        
+	        <ImageView
+	            android:id="@+id/item4"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:src="@drawable/image1" >
+	        </ImageView>
+	        
+	        <ImageView
+	            android:id="@+id/item5"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:src="@drawable/image1" >
+	        </ImageView>
+	        
+	        <ImageView
+	            android:id="@+id/item6"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:src="@drawable/image1" >
+	        </ImageView>
+	        
+	    </LinearLayout>
 	    
-	    <TextView
-	        android:id="@+id/mana"
+	    <LinearLayout
+	        android:id="@+id/stats"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
-	        android:text="@string/manaString" >
-	    </TextView>
+	        android:orientation="vertical" >
 	    
-	    <TextView
-	        android:id="@+id/manaRegen"
-	        android:layout_width="wrap_content"
+		    <TextView
+		        android:id="@+id/cost"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:text="@string/costString" >
+		    </TextView>
+		    
+		    <TextView
+		        android:id="@+id/health"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:text="@string/healthString" >
+		    </TextView>
+		    
+		    <TextView
+		        android:id="@+id/healthRegen"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:text="@string/healthRegenString" >
+		    </TextView>
+		    
+		    <TextView
+		        android:id="@+id/mana"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:text="@string/manaString" >
+		    </TextView>
+		    
+		    <TextView
+		        android:id="@+id/manaRegen"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:text="@string/manaRegenString" >
+		    </TextView>
+		    
+		    <TextView
+		        android:id="@+id/attackDamage"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:text="@string/attackDamageString" >
+		    </TextView>
+		    
+		    <TextView
+		        android:id="@+id/attackSpeed"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:text="@string/attackSpeedString" >
+		    </TextView>
+		    
+		    <TextView
+		        android:id="@+id/critStrike"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:text="@string/critStrikeString" >
+		    </TextView>
+		    
+		    <TextView
+		        android:id="@+id/lifeSteal"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:text="@string/lifeStealString" >
+		    </TextView>
+		    
+		    <TextView
+		        android:id="@+id/abilityPower"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:text="@string/abilityPowerString" >
+		    </TextView>
+		    
+		    <TextView
+		        android:id="@+id/cooldownReduction"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:text="@string/cooldownReductionString" >
+		    </TextView>
+		    
+		    <TextView
+		        android:id="@+id/armor"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:text="@string/armorString" >
+		    </TextView>
+		    
+		    <TextView
+		        android:id="@+id/magicResist"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:text="@string/magicResistString" >
+		    </TextView>
+	<!-- 	    
+		    <TextView
+		        android:id="@+id/spellVamp"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content" >
+		    </TextView>
+	 -->	    
+		    <TextView
+		        android:id="@+id/armorPen"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:text="@string/armorPenString" >
+		    </TextView>
+		    
+		    <TextView
+		        android:id="@+id/magicPen"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:text="@string/magicPenString" >
+		    </TextView>
+		    
+		    <TextView
+		        android:id="@+id/moveSpeed"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:text="@string/moveSpeedString" >
+		    </TextView>
+		    
+		</LinearLayout>
+		
+	    <LinearLayout 
+	        android:id="@+id/items"
+	        android:layout_width="fill_parent"
 	        android:layout_height="wrap_content"
-	        android:text="@string/manaRegenString" >
-	    </TextView>
-	    
-	    <TextView
-	        android:id="@+id/attackDamage"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:text="@string/attackDamageString" >
-	    </TextView>
-	    
-	    <TextView
-	        android:id="@+id/attackSpeed"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:text="@string/attackSpeedString" >
-	    </TextView>
-	    
-	    <TextView
-	        android:id="@+id/critStrike"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:text="@string/critStrikeString" >
-	    </TextView>
-	    
-	    <TextView
-	        android:id="@+id/lifeSteal"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:text="@string/lifeStealString" >
-	    </TextView>
-	    
-	    <TextView
-	        android:id="@+id/abilityPower"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:text="@string/abilityPowerString" >
-	    </TextView>
-	    
-	    <TextView
-	        android:id="@+id/cooldownReduction"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:text="@string/cooldownReductionString" >
-	    </TextView>
-	    
-	    <TextView
-	        android:id="@+id/armor"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:text="@string/armorString" >
-	    </TextView>
-	    
-	    <TextView
-	        android:id="@+id/magicResist"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:text="@string/magicResistString" >
-	    </TextView>
-<!-- 	    
-	    <TextView
-	        android:id="@+id/spellVamp"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content" >
-	    </TextView>
- -->	    
-	    <TextView
-	        android:id="@+id/armorPen"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:text="@string/armorPenString" >
-	    </TextView>
-	    
-	    <TextView
-	        android:id="@+id/magicPen"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:text="@string/magicPenString" >
-	    </TextView>
-	    
-	    <TextView
-	        android:id="@+id/moveSpeed"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:text="@string/moveSpeedString" >
-	    </TextView>
-	    
-	</LinearLayout>
+	        android:orientation="vertical" >
+	        
+	    </LinearLayout>
 	
-    <LinearLayout 
-        android:id="@+id/items"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical" >
-        
-    </LinearLayout>
-
-</LinearLayout>
+	</LinearLayout>
+</ScrollView>

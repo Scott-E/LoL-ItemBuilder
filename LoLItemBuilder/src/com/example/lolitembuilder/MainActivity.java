@@ -5,7 +5,9 @@ import android.app.Activity;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -18,6 +20,7 @@ public class MainActivity extends Activity {
 		
 		buildGrid();
 		buildItems();
+		undoListener();
 	}
 	
 	private static final int ITEMS = 130;
@@ -25,7 +28,7 @@ public class MainActivity extends Activity {
 			attackDamage = 0, attackSpeed = 0, critStrike = 0, lifeSteal = 0,
 			abilityPower = 0, cooldownReduction = 0, spellVamp = 0, 
 			armor = 0, magicResist = 0, armorPen = 0, magicPen = 0, 
-			moveSpeed = 0, moveSpeedPercent = 0;
+			moveSpeed = 0, moveSpeedPercent = 0, itemMax = 0, lastItemId = 0;
 	int[] statsArray = new int[18];
 	
 	private void buildGrid()
@@ -53,50 +56,135 @@ public class MainActivity extends Activity {
 		{
 			ImageButton button = new ImageButton(this);
 			button.setId(i);
-			switch(i)
-			{
-			case 0:
-				button.setImageResource(R.drawable.image0);
-				break;
-			case 1:
-				button.setImageResource(R.drawable.image1);
-				break;
-			case 2:
-				button.setImageResource(R.drawable.image2);
-				break;
-			case 3:
-				button.setImageResource(R.drawable.image3);
-				break;
-			case 4:
-				button.setImageResource(R.drawable.image0);
-				break;
-			case 5:
-				button.setImageResource(R.drawable.image0);
-				break;
-			case 6:
-				button.setImageResource(R.drawable.image0);
-				break;
-			case 7:
-				button.setImageResource(R.drawable.image0);
-				break;
-			case 8:
-				button.setImageResource(R.drawable.image0);
-				break;
-			case 9:
-				button.setImageResource(R.drawable.image0);
-				break;
-			case 10:
-				button.setImageResource(R.drawable.image0);
-				break;
-			case 11:
-				button.setImageResource(R.drawable.image0);
-				break;
-			}
+//			switch(i)
+//			{
+//			case 0:
+//				button.setImageResource(R.drawable.image0);
+//				break;
+//			case 1:
+//				button.setImageResource(R.drawable.image1);
+//				break;
+//			case 2:
+//				button.setImageResource(R.drawable.image2);
+//				break;
+//			case 3:
+//				button.setImageResource(R.drawable.image3);
+//				break;
+//			case 4:
+//				button.setImageResource(R.drawable.image4);
+//				break;
+//			case 5:
+//				button.setImageResource(R.drawable.image5);
+//				break;
+//			case 6:
+//				button.setImageResource(R.drawable.image6);
+//				break;
+//			case 7:
+//				button.setImageResource(R.drawable.image7);
+//				break;
+//			case 8:
+//				button.setImageResource(R.drawable.image8);
+//				break;
+//			case 9:
+//				button.setImageResource(R.drawable.image9);
+//				break;
+//			case 10:
+//				button.setImageResource(R.drawable.image10);
+//				break;
+//			case 11:
+//				button.setImageResource(R.drawable.image11);
+//				break;
+//			}
+			button.setImageResource(R.drawable.image0);
 			button.setOnClickListener(buttonListener);
 			
 			LinearLayout row = (LinearLayout)this.findViewById(1000 + (i / 6));
 			row.addView(button);
 		}
+	}
+	
+	public void deleteNewItem(int buttonId)
+	{
+		ImageView itemSlot = (ImageView)this.findViewById(R.id.item1);
+//		switch(buttonId)
+//		{
+//		case 0:
+//			itemSlot.setImageResource(R.drawable.image0);
+//		}
+		itemSlot.setImageResource(R.drawable.image0);
+	}
+	
+	public void displayNewItem(int buttonId)
+	{
+		ImageView itemSlot = (ImageView)this.findViewById(R.id.item1);
+//		switch(buttonId)
+//		{
+//		case 0:
+//			itemSlot.setImageResource(R.drawable.image0);
+//		}
+		itemSlot.setImageResource(R.drawable.image0);
+	}
+	
+	public void displayStats()
+	{
+		TextView costView = (TextView)this.findViewById(R.id.cost);
+		costView.setText("Cost:  " + cost);
+		
+		TextView healthView = (TextView)this.findViewById(R.id.health);
+		healthView.setText("Health:  " + health);
+		
+		TextView healthRegenView = (TextView)this.findViewById(R.id.healthRegen);
+		healthRegenView.setText("Health regen/5 seconds:  " + healthRegen);
+		
+		TextView manaView = (TextView)this.findViewById(R.id.mana);
+		manaView.setText("Mana:  " + mana);
+		
+		TextView manaRegenView = (TextView)this.findViewById(R.id.manaRegen);
+		manaRegenView.setText("Mana regen/5 seconds:  " + manaRegen);
+		
+		TextView attackDamageView = (TextView)this.findViewById(R.id.attackDamage);
+		attackDamageView.setText("Attack damage:  " + attackDamage);
+		
+		TextView attackSpeedView = (TextView)this.findViewById(R.id.attackSpeed);
+		attackSpeedView.setText("Attack Speed:  " + attackSpeed + "%");
+		
+		TextView critStrikeView = (TextView)this.findViewById(R.id.critStrike);
+		int critStrikeCap = critStrike;
+		if(critStrikeCap > 100)
+			critStrikeCap = 100;
+		critStrikeView.setText("Critical Strike Chance:  " + critStrikeCap + "%");
+		
+		TextView lifeStealView = (TextView)this.findViewById(R.id.lifeSteal);
+		int lifeStealCap = lifeSteal;
+		if(lifeStealCap > 100)
+			lifeStealCap = 100;
+		lifeStealView.setText("Lifesteal:  " + lifeStealCap + "%");
+		
+		TextView abilityPowerView = (TextView)this.findViewById(R.id.abilityPower);
+		abilityPowerView.setText("Ability Power:  " + abilityPower);
+		
+		TextView cooldownView = (TextView)this.findViewById(R.id.cooldownReduction);
+		int cooldownCap = cooldownReduction;
+		if(cooldownCap > 40)
+			cooldownCap = 40;
+		cooldownView.setText("Cooldown Reduction:  " + cooldownCap);
+		
+		TextView armorView = (TextView)this.findViewById(R.id.armor);
+		armorView.setText("Armor:  " + armor);
+		
+		TextView magicResistView = (TextView)this.findViewById(R.id.magicResist);
+		magicResistView.setText("Magic Resistance:  " + magicResist);
+		
+		TextView armorPenView = (TextView)this.findViewById(R.id.armorPen);
+		armorPenView.setText("Armor Penetration:  " + armorPen);
+		
+		TextView magicPenView = (TextView)this.findViewById(R.id.magicPen);
+		magicPenView.setText("Magic Penetration:  " + magicPen);
+		
+		TextView moveSpeedView = (TextView)this.findViewById(R.id.moveSpeed);
+		double moveSpeedDecimal = moveSpeedPercent / 100;
+		moveSpeedView.setText("Movement Speed:  " + moveSpeedDecimal + 
+				"((Base champion movement speed) + " + moveSpeed + ")");
 	}
 	
 	public void getItemStats(int item, int[] stats)
@@ -881,66 +969,43 @@ public class MainActivity extends Activity {
 		}
 	}
 	
-	public void displayStats()
+	public void undoListener()
 	{
-		TextView costView = (TextView)this.findViewById(R.id.cost);
-		costView.setText("Cost:  " + cost);
-		
-		TextView healthView = (TextView)this.findViewById(R.id.health);
-		healthView.setText("Health:  " + health);
-		
-		TextView healthRegenView = (TextView)this.findViewById(R.id.healthRegen);
-		healthRegenView.setText("Health regen/5 seconds:  " + healthRegen);
-		
-		TextView manaView = (TextView)this.findViewById(R.id.mana);
-		manaView.setText("Mana:  " + mana);
-		
-		TextView manaRegenView = (TextView)this.findViewById(R.id.manaRegen);
-		manaRegenView.setText("Mana regen/5 seconds:  " + manaRegen);
-		
-		TextView attackDamageView = (TextView)this.findViewById(R.id.attackDamage);
-		attackDamageView.setText("Attack damage:  " + attackDamage);
-		
-		TextView attackSpeedView = (TextView)this.findViewById(R.id.attackSpeed);
-		attackSpeedView.setText("Attack Speed:  " + attackSpeed + "%");
-		
-		TextView critStrikeView = (TextView)this.findViewById(R.id.critStrike);
-		int critStrikeCap = critStrike;
-		if(critStrikeCap > 100)
-			critStrikeCap = 100;
-		critStrikeView.setText("Critical Strike Chance:  " + critStrikeCap + "%");
-		
-		TextView lifeStealView = (TextView)this.findViewById(R.id.lifeSteal);
-		int lifeStealCap = lifeSteal;
-		if(lifeStealCap > 100)
-			lifeStealCap = 100;
-		lifeStealView.setText("Lifesteal:  " + lifeStealCap + "%");
-		
-		TextView abilityPowerView = (TextView)this.findViewById(R.id.abilityPower);
-		abilityPowerView.setText("Ability Power:  " + abilityPower);
-		
-		TextView cooldownView = (TextView)this.findViewById(R.id.cooldownReduction);
-		int cooldownCap = cooldownReduction;
-		if(cooldownCap > 40)
-			cooldownCap = 40;
-		cooldownView.setText("Cooldown Reduction:  " + cooldownCap);
-		
-		TextView armorView = (TextView)this.findViewById(R.id.armor);
-		armorView.setText("Armor:  " + armor);
-		
-		TextView magicResistView = (TextView)this.findViewById(R.id.magicResist);
-		magicResistView.setText("Magic Resistance:  " + magicResist);
-		
-		TextView armorPenView = (TextView)this.findViewById(R.id.armorPen);
-		armorPenView.setText("Armor Penetration:  " + armorPen);
-		
-		TextView magicPenView = (TextView)this.findViewById(R.id.magicPen);
-		magicPenView.setText("Magic Penetration:  " + magicPen);
-		
-		TextView moveSpeedView = (TextView)this.findViewById(R.id.moveSpeed);
-		double moveSpeedDecimal = moveSpeedPercent / 100;
-		moveSpeedView.setText("Movement Speed:  " + moveSpeedDecimal + 
-				"((Base champion movement speed) + " + moveSpeed + ")");
+		Button undo = (Button)this.findViewById(R.id.undo);
+		undo.setOnClickListener(new OnClickListener()
+		{
+			@Override
+			public void onClick(View v)
+			{
+				if(itemMax > 0)
+				{
+					for(int i = 0; i < 18; i++)
+						statsArray[i] = 0;
+					getItemStats(lastItemId, statsArray);
+					cost -= statsArray[0];
+					health -= statsArray[1];
+					healthRegen -= statsArray[2];
+					mana -= statsArray[3];
+					manaRegen -= statsArray[4];
+					attackDamage -= statsArray[5];
+					attackSpeed -= statsArray[6];
+					critStrike -= statsArray[7];
+					lifeSteal -= statsArray[8];
+					abilityPower -= statsArray[9];
+					cooldownReduction -= statsArray[10];
+					spellVamp -= statsArray[11];
+					armor -= statsArray[12];
+					magicResist -= statsArray[13];
+					armorPen -= statsArray[14];
+					magicPen -= statsArray[15];
+					moveSpeedPercent -= statsArray[17];
+					
+					displayStats();
+					deleteNewItem(lastItemId);
+					itemMax--;
+				}
+			}
+		});
 	}
 	
 	private OnClickListener buttonListener = new OnClickListener()
@@ -948,61 +1013,72 @@ public class MainActivity extends Activity {
 		@Override
 		public void onClick(View v)
 		{
-			for(int i = 0; i < 18; i++)
-				statsArray[i] = 0;
-			getItemStats(v.getId(), statsArray);
-			cost += statsArray[0];
-			health += statsArray[1];
-			healthRegen += statsArray[2];
-			mana += statsArray[3];
-			manaRegen += statsArray[4];
-			attackDamage += statsArray[5];
-			attackSpeed += statsArray[6];
-			critStrike += statsArray[7];
-			lifeSteal += statsArray[8];
-			abilityPower += statsArray[9];
-			cooldownReduction += statsArray[10];
-			spellVamp += statsArray[11];
-			armor += statsArray[12];
-			magicResist += statsArray[13];
-			armorPen += statsArray[14];
-			magicPen += statsArray[15];
-			moveSpeed = statsArray[16];
-			moveSpeedPercent += statsArray[17];
-			
-			displayStats();
+			if(itemMax < 6)
+			{
+				for(int i = 0; i < 18; i++)
+					statsArray[i] = 0;
+				lastItemId = v.getId();
+				getItemStats(v.getId(), statsArray);
+				cost += statsArray[0];
+				health += statsArray[1];
+				healthRegen += statsArray[2];
+				mana += statsArray[3];
+				manaRegen += statsArray[4];
+				attackDamage += statsArray[5];
+				attackSpeed += statsArray[6];
+				critStrike += statsArray[7];
+				lifeSteal += statsArray[8];
+				abilityPower += statsArray[9];
+				cooldownReduction += statsArray[10];
+				spellVamp += statsArray[11];
+				armor += statsArray[12];
+				magicResist += statsArray[13];
+				armorPen += statsArray[14];
+				magicPen += statsArray[15];
+				moveSpeed = statsArray[16];
+				moveSpeedPercent += statsArray[17];
+				
+				displayStats();
+				displayNewItem(v.getId());
+				itemMax++;
+			}
 		}
 	};
 	
-	private OnClickListener undoListener = new OnClickListener()
-	{
-		@Override
-		public void onClick(View v)
-		{
-			for(int i = 0; i < 18; i++)
-				statsArray[i] = 0;
-			getItemStats(v.getId(), statsArray);
-			cost -= statsArray[0];
-			health -= statsArray[1];
-			healthRegen -= statsArray[2];
-			mana -= statsArray[3];
-			manaRegen -= statsArray[4];
-			attackDamage -= statsArray[5];
-			attackSpeed -= statsArray[6];
-			critStrike -= statsArray[7];
-			lifeSteal -= statsArray[8];
-			abilityPower -= statsArray[9];
-			cooldownReduction -= statsArray[10];
-			spellVamp -= statsArray[11];
-			armor -= statsArray[12];
-			magicResist -= statsArray[13];
-			armorPen -= statsArray[14];
-			magicPen -= statsArray[15];
-			moveSpeedPercent -= statsArray[17];
-			
-			displayStats();
-		}
-	};
+//	private OnClickListener undoListener = new OnClickListener()
+//	{
+//		@Override
+//		public void onClick(View v)
+//		{
+//			if(itemMax > 0)
+//			{
+//				for(int i = 0; i < 18; i++)
+//					statsArray[i] = 0;
+//				getItemStats(v.getId(), statsArray);
+//				cost -= statsArray[0];
+//				health -= statsArray[1];
+//				healthRegen -= statsArray[2];
+//				mana -= statsArray[3];
+//				manaRegen -= statsArray[4];
+//				attackDamage -= statsArray[5];
+//				attackSpeed -= statsArray[6];
+//				critStrike -= statsArray[7];
+//				lifeSteal -= statsArray[8];
+//				abilityPower -= statsArray[9];
+//				cooldownReduction -= statsArray[10];
+//				spellVamp -= statsArray[11];
+//				armor -= statsArray[12];
+//				magicResist -= statsArray[13];
+//				armorPen -= statsArray[14];
+//				magicPen -= statsArray[15];
+//				moveSpeedPercent -= statsArray[17];
+//				
+//				displayStats();
+//				deleteNewItem(v.getId());
+//				itemMax--;
+//			}
+//		}
+//	};
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
