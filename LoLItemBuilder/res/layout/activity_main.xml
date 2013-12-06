@@ -58,13 +58,19 @@
 	    </TextView>
 	    
 	    <TextView
+	        android:id="@+id/critStrike"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content" >
+	    </TextView>
+	    
+	    <TextView
 	        android:id="@+id/abilityPower"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content" >
 	    </TextView>
 	    
 	    <TextView
-	        android:id="@+id/cooldownRed"
+	        android:id="@+id/cooldownReduction"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content" >
 	    </TextView>
