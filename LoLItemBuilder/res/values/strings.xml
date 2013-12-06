@@ -4,5 +4,24 @@
     <string name="app_name">LoLItemBuilder</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
+    
+    <string name="costString">Cost:  0</string>
+    <string name="healthString">Health:  0</string>
+    <string name="healthRegenString">Health Regen/5 seconds:  0</string>
+    <string name="manaString">Mana:  0</string>
+    <string name="manaRegenString">Mana Regen/5 seconds:  0</string>
+    <string name="attackDamageString">Attack Damage:  0</string>
+    <string name="attackSpeedString">Attack Speed:  0%</string>
+    <string name="critStrikeString">Critical Strike Chance:  0%</string>
+    <string name="lifeStealString">Lifesteal:  0%</string>
+    <string name="abilityPowerString">Ability Power:  0</string>
+    <string name="cooldownReductionString">Cooldown Reduction:  0%</string>
+    <string name="armorString">Armor:  0</string>
+    <string name="magicResistString">Magic Resistance:  0</string>
+    <string name="armorPenString">Armor Penetration:  0</string>
+    <string name="magicPenString">Magic Penetration:  0</string>
+    <string name="moveSpeedString">
+        Movement Speed:  0(Base champion movement speed + 0)
+    </string>
 
 </resources>
