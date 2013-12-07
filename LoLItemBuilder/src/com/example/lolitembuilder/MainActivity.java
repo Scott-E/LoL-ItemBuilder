@@ -30,7 +30,7 @@ public class MainActivity extends Activity {
 			armor = 0, magicResist = 0, armorPen = 0, magicPen = 0, 
 			moveSpeed = 0, moveSpeedPercent = 0, itemMax = 0, lastItemId = 0;
 	int[] statsArray = new int[18];
-	int[] itemSlots = new int[7];
+	int[] itemSlots = new int[]{0, 0, 0, 0, 0, 0, 0};
 	
 	private void buildGrid()
 	{
@@ -57,46 +57,399 @@ public class MainActivity extends Activity {
 		{
 			ImageButton button = new ImageButton(this);
 			button.setId(i);
-//			switch(i)
-//			{
-//			case 0:
-//				button.setImageResource(R.drawable.image0);
-//				break;
-//			case 1:
-//				button.setImageResource(R.drawable.image1);
-//				break;
-//			case 2:
-//				button.setImageResource(R.drawable.image2);
-//				break;
-//			case 3:
-//				button.setImageResource(R.drawable.image3);
-//				break;
-//			case 4:
-//				button.setImageResource(R.drawable.image4);
-//				break;
-//			case 5:
-//				button.setImageResource(R.drawable.image5);
-//				break;
-//			case 6:
-//				button.setImageResource(R.drawable.image6);
-//				break;
-//			case 7:
-//				button.setImageResource(R.drawable.image7);
-//				break;
-//			case 8:
-//				button.setImageResource(R.drawable.image8);
-//				break;
-//			case 9:
-//				button.setImageResource(R.drawable.image9);
-//				break;
-//			case 10:
-//				button.setImageResource(R.drawable.image10);
-//				break;
-//			case 11:
-//				button.setImageResource(R.drawable.image11);
-//				break;
-//			}
-			button.setImageResource(R.drawable.image0);
+			switch(i)
+			{
+			case 0:
+				button.setImageResource(R.drawable.image0);
+				break;
+			case 1:
+				button.setImageResource(R.drawable.image1);
+				break;
+			case 2:
+				button.setImageResource(R.drawable.image2);
+				break;
+			case 3:
+				button.setImageResource(R.drawable.image3);
+				break;
+			case 4:
+				button.setImageResource(R.drawable.image4);
+				break;
+			case 5:
+				button.setImageResource(R.drawable.image5);
+				break;
+			case 6:
+				button.setImageResource(R.drawable.image6);
+				break;
+			case 7:
+				button.setImageResource(R.drawable.image7);
+				break;
+			case 8:
+				button.setImageResource(R.drawable.image8);
+				break;
+			case 9:
+				button.setImageResource(R.drawable.image9);
+				break;
+			case 10:
+				button.setImageResource(R.drawable.image10);
+				break;
+			case 11:
+				button.setImageResource(R.drawable.image11);
+				break;
+			case 12:
+				button.setImageResource(R.drawable.image12);
+				break;
+			case 13:
+				button.setImageResource(R.drawable.image13);
+				break;
+			case 14:
+				button.setImageResource(R.drawable.image14);
+				break;
+			case 15:
+				button.setImageResource(R.drawable.image15);
+				break;
+			case 16:
+				button.setImageResource(R.drawable.image16);
+				break;
+			case 17:
+				button.setImageResource(R.drawable.image17);
+				break;
+			case 18:
+				button.setImageResource(R.drawable.image18);
+				break;
+			case 19:
+				button.setImageResource(R.drawable.image19);
+				break;
+			case 20:
+				button.setImageResource(R.drawable.image20);
+				break;
+			case 21:
+				button.setImageResource(R.drawable.image21);
+				break;
+			case 22:
+				button.setImageResource(R.drawable.image22);
+				break;
+			case 23:
+				button.setImageResource(R.drawable.image23);
+				break;
+			case 24:
+				button.setImageResource(R.drawable.image24);
+				break;
+			case 25:
+				button.setImageResource(R.drawable.image25);
+				break;
+			case 26:
+				button.setImageResource(R.drawable.image26);
+				break;
+			case 27:
+				button.setImageResource(R.drawable.image27);
+				break;
+			case 28:
+				button.setImageResource(R.drawable.image28);
+				break;
+			case 29:
+				button.setImageResource(R.drawable.image29);
+				break;
+			case 30:
+				button.setImageResource(R.drawable.image30);
+				break;
+			case 31:
+				button.setImageResource(R.drawable.image31);
+				break;
+			case 32:
+				button.setImageResource(R.drawable.image32);
+				break;
+			case 33:
+				button.setImageResource(R.drawable.image33);
+				break;
+			case 34:
+				button.setImageResource(R.drawable.image34);
+				break;
+			case 35:
+				button.setImageResource(R.drawable.image35);
+				break;
+			case 36:
+				button.setImageResource(R.drawable.image36);
+				break;
+			case 37:
+				button.setImageResource(R.drawable.image37);
+				break;
+			case 38:
+				button.setImageResource(R.drawable.image38);
+				break;
+			case 39:
+				button.setImageResource(R.drawable.image39);
+				break;
+			case 40:
+				button.setImageResource(R.drawable.image40);
+				break;
+			case 41:
+				button.setImageResource(R.drawable.image41);
+				break;
+			case 42:
+				button.setImageResource(R.drawable.image42);
+				break;
+			case 43:
+				button.setImageResource(R.drawable.image43);
+				break;
+			case 44:
+				button.setImageResource(R.drawable.image44);
+				break;
+			case 45:
+				button.setImageResource(R.drawable.image45);
+				break;
+			case 46:
+				button.setImageResource(R.drawable.image46);
+				break;
+			case 47:
+				button.setImageResource(R.drawable.image47);
+				break;
+			case 48:
+				button.setImageResource(R.drawable.image48);
+				break;
+			case 49:
+				button.setImageResource(R.drawable.image49);
+				break;
+			case 50:
+				button.setImageResource(R.drawable.image50);
+				break;
+			case 51:
+				button.setImageResource(R.drawable.image51);
+				break;
+			case 52:
+				button.setImageResource(R.drawable.image52);
+				break;
+			case 53:
+				button.setImageResource(R.drawable.image53);
+				break;
+			case 54:
+				button.setImageResource(R.drawable.image54);
+				break;
+			case 55:
+				button.setImageResource(R.drawable.image55);
+				break;
+			case 56:
+				button.setImageResource(R.drawable.image56);
+				break;
+			case 57:
+				button.setImageResource(R.drawable.image57);
+				break;
+			case 58:
+				button.setImageResource(R.drawable.image58);
+				break;
+			case 59:
+				button.setImageResource(R.drawable.image59);
+				break;
+			case 60:
+				button.setImageResource(R.drawable.image60);
+				break;
+			case 61:
+				button.setImageResource(R.drawable.image61);
+				break;
+			case 62:
+				button.setImageResource(R.drawable.image62);
+				break;
+			case 63:
+				button.setImageResource(R.drawable.image63);
+				break;
+			case 64:
+				button.setImageResource(R.drawable.image64);
+				break;
+			case 65:
+				button.setImageResource(R.drawable.image65);
+				break;
+			case 66:
+				button.setImageResource(R.drawable.image66);
+				break;
+			case 67:
+				button.setImageResource(R.drawable.image67);
+				break;
+			case 68:
+				button.setImageResource(R.drawable.image68);
+				break;
+			case 69:
+				button.setImageResource(R.drawable.image69);
+				break;
+			case 70:
+				button.setImageResource(R.drawable.image70);
+				break;
+			case 71:
+				button.setImageResource(R.drawable.image71);
+				break;
+			case 72:
+				button.setImageResource(R.drawable.image72);
+				break;
+			case 73:
+				button.setImageResource(R.drawable.image73);
+				break;
+			case 74:
+				button.setImageResource(R.drawable.image74);
+				break;
+			case 75:
+				button.setImageResource(R.drawable.image75);
+				break;
+			case 76:
+				button.setImageResource(R.drawable.image76);
+				break;
+			case 77:
+				button.setImageResource(R.drawable.image77);
+				break;
+			case 78:
+				button.setImageResource(R.drawable.image78);
+				break;
+			case 79:
+				button.setImageResource(R.drawable.image79);
+				break;
+			case 80:
+				button.setImageResource(R.drawable.image80);
+				break;
+			case 81:
+				button.setImageResource(R.drawable.image81);
+				break;
+			case 82:
+				button.setImageResource(R.drawable.image82);
+				break;
+			case 83:
+				button.setImageResource(R.drawable.image83);
+				break;
+			case 84:
+				button.setImageResource(R.drawable.image84);
+				break;
+			case 85:
+				button.setImageResource(R.drawable.image85);
+				break;
+			case 86:
+				button.setImageResource(R.drawable.image86);
+				break;
+			case 87:
+				button.setImageResource(R.drawable.image87);
+				break;
+			case 88:
+				button.setImageResource(R.drawable.image88);
+				break;
+			case 89:
+				button.setImageResource(R.drawable.image89);
+				break;
+			case 90:
+				button.setImageResource(R.drawable.image90);
+				break;
+			case 91:
+				button.setImageResource(R.drawable.image91);
+				break;
+			case 92:
+				button.setImageResource(R.drawable.image92);
+				break;
+			case 93:
+				button.setImageResource(R.drawable.image93);
+				break;
+			case 94:
+				button.setImageResource(R.drawable.image94);
+				break;
+			case 95:
+				button.setImageResource(R.drawable.image95);
+				break;
+			case 96:
+				button.setImageResource(R.drawable.image96);
+				break;
+			case 97:
+				button.setImageResource(R.drawable.image97);
+				break;
+			case 98:
+				button.setImageResource(R.drawable.image98);
+				break;
+			case 99:
+				button.setImageResource(R.drawable.image99);
+				break;
+			case 100:
+				button.setImageResource(R.drawable.image100);
+				break;
+			case 101:
+				button.setImageResource(R.drawable.image101);
+				break;
+			case 102:
+				button.setImageResource(R.drawable.image102);
+				break;
+			case 103:
+				button.setImageResource(R.drawable.image103);
+				break;
+			case 104:
+				button.setImageResource(R.drawable.image104);
+				break;
+			case 105:
+				button.setImageResource(R.drawable.image105);
+				break;
+			case 106:
+				button.setImageResource(R.drawable.image106);
+				break;
+			case 107:
+				button.setImageResource(R.drawable.image107);
+				break;
+			case 108:
+				button.setImageResource(R.drawable.image108);
+				break;
+			case 109:
+				button.setImageResource(R.drawable.image109);
+				break;
+			case 110:
+				button.setImageResource(R.drawable.image110);
+				break;
+			case 111:
+				button.setImageResource(R.drawable.image111);
+				break;
+			case 112:
+				button.setImageResource(R.drawable.image112);
+				break;
+			case 113:
+				button.setImageResource(R.drawable.image113);
+				break;
+			case 114:
+				button.setImageResource(R.drawable.image114);
+				break;
+			case 115:
+				button.setImageResource(R.drawable.image115);
+				break;
+			case 116:
+				button.setImageResource(R.drawable.image116);
+				break;
+			case 117:
+				button.setImageResource(R.drawable.image117);
+				break;
+			case 118:
+				button.setImageResource(R.drawable.image118);
+				break;
+			case 119:
+				button.setImageResource(R.drawable.image119);
+				break;
+			case 120:
+				button.setImageResource(R.drawable.image120);
+				break;
+			case 121:
+				button.setImageResource(R.drawable.image121);
+				break;
+			case 122:
+				button.setImageResource(R.drawable.image122);
+				break;
+			case 123:
+				button.setImageResource(R.drawable.image123);
+				break;
+			case 124:
+				button.setImageResource(R.drawable.image124);
+				break;
+			case 125:
+				button.setImageResource(R.drawable.image125);
+				break;
+			case 126:
+				button.setImageResource(R.drawable.image126);
+				break;
+			case 127:
+				button.setImageResource(R.drawable.image127);
+				break;
+			case 128:
+				button.setImageResource(R.drawable.image128);
+				break;
+			case 129:
+				button.setImageResource(R.drawable.image129);
+				break;
+			}
 			button.setOnClickListener(buttonListener);
 			
 			LinearLayout row = (LinearLayout)this.findViewById(1000 + (i / 6));
@@ -106,17 +459,55 @@ public class MainActivity extends Activity {
 	
 	public void deleteNewItem(int buttonId)
 	{
-		ImageView itemSlot = (ImageView)this.findViewById(R.id.item1);
-//		switch(buttonId)
-//		{
-//		case 0:
-//			itemSlot.setImageResource(R.drawable.image0);
-//		}
-		itemSlot.setImageResource(R.drawable.image0);
+		int slotNumber = 6;
+		for(int i = 0; i < 7; i++)
+		{
+			if(itemSlots[i] == 0)
+			{
+				slotNumber = itemSlots[i-1];
+				break;
+			}
+		}
+		switch(slotNumber)
+		{
+		case 0:
+			ImageView slot1 = (ImageView)this.findViewById(R.id.item1);
+			slot1.setImageResource(R.drawable.empty);
+			break;
+		case 1:
+			ImageView slot2 = (ImageView)this.findViewById(R.id.item2);
+			slot2.setImageResource(R.drawable.empty);
+			break;
+		case 2:
+			ImageView slot3 = (ImageView)this.findViewById(R.id.item3);
+			slot3.setImageResource(R.drawable.empty);
+			break;
+		case 3:
+			ImageView slot4 = (ImageView)this.findViewById(R.id.item4);
+			slot4.setImageResource(R.drawable.empty);
+			break;
+		case 4:
+			ImageView slot5 = (ImageView)this.findViewById(R.id.item5);
+			slot5.setImageResource(R.drawable.empty);
+			break;
+		case 5:
+			ImageView slot6 = (ImageView)this.findViewById(R.id.item6);
+			slot6.setImageResource(R.drawable.empty);
+			break;
+		}
 	}
 	
 	public void displayNewItem(int buttonId)
 	{
+		int slotNumber = 0;
+		for(int i = 0; i < 6; i++)
+		{
+			if(itemSlots[i] == 0)
+			{
+				slotNumber = itemSlots[i];
+				break;
+			}
+		}
 		ImageView itemSlot = (ImageView)this.findViewById(R.id.item1);
 //		switch(buttonId)
 //		{
