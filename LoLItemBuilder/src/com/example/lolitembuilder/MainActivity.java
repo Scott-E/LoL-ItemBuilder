@@ -30,6 +30,7 @@ public class MainActivity extends Activity {
 			armor = 0, magicResist = 0, armorPen = 0, magicPen = 0, 
 			moveSpeed = 0, moveSpeedPercent = 0, itemMax = 0, lastItemId = 0;
 	int[] statsArray = new int[18];
+	int[] itemSlots = new int[7];
 	
 	private void buildGrid()
 	{
@@ -979,6 +980,13 @@ public class MainActivity extends Activity {
 			{
 				if(itemMax > 0)
 				{
+					for(int i = 0; i < 7; i++)
+					{
+						if(itemSlots[i] == 0 && i != 0)
+						{
+							itemSlots[i - 1] = lastItemId;
+						}
+					}
 					for(int i = 0; i < 18; i++)
 						statsArray[i] = 0;
 					getItemStats(lastItemId, statsArray);
@@ -1041,44 +1049,17 @@ public class MainActivity extends Activity {
 				displayStats();
 				displayNewItem(v.getId());
 				itemMax++;
+				for(int i = 0; i < 6; i++)
+				{
+					if(itemSlots[i] == 0)
+					{
+						itemSlots[i] = v.getId();
+						break;
+					}
+				}
 			}
 		}
 	};
-	
-//	private OnClickListener undoListener = new OnClickListener()
-//	{
-//		@Override
-//		public void onClick(View v)
-//		{
-//			if(itemMax > 0)
-//			{
-//				for(int i = 0; i < 18; i++)
-//					statsArray[i] = 0;
-//				getItemStats(v.getId(), statsArray);
-//				cost -= statsArray[0];
-//				health -= statsArray[1];
-//				healthRegen -= statsArray[2];
-//				mana -= statsArray[3];
-//				manaRegen -= statsArray[4];
-//				attackDamage -= statsArray[5];
-//				attackSpeed -= statsArray[6];
-//				critStrike -= statsArray[7];
-//				lifeSteal -= statsArray[8];
-//				abilityPower -= statsArray[9];
-//				cooldownReduction -= statsArray[10];
-//				spellVamp -= statsArray[11];
-//				armor -= statsArray[12];
-//				magicResist -= statsArray[13];
-//				armorPen -= statsArray[14];
-//				magicPen -= statsArray[15];
-//				moveSpeedPercent -= statsArray[17];
-//				
-//				displayStats();
-//				deleteNewItem(v.getId());
-//				itemMax--;
-//			}
-//		}
-//	};
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
