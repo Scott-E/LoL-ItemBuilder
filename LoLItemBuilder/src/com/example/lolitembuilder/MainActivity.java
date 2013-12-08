@@ -21,6 +21,7 @@ public class MainActivity extends Activity {
 		buildGrid();
 		buildItems();
 		undoListener();
+		clearListener();
 	}
 	
 	private static final int ITEMS = 130;
@@ -457,18 +458,37 @@ public class MainActivity extends Activity {
 		}
 	}
 	
-	public void deleteNewItem(int buttonId)
+	public void clearListener()
 	{
-		int slotNumber = 6;
-		for(int i = 0; i < 7; i++)
+		Button clear = (Button)this.findViewById(R.id.clear);
+		clear.setOnClickListener(new OnClickListener()
 		{
-			if(itemSlots[i] == 0)
+			@Override
+			public void onClick(View v)
 			{
-				slotNumber = itemSlots[i-1];
-				break;
+				for(int i = 0; i < 6; i++)
+				{
+					deleteItemImage(i);
+				}
+				
+				for(int i = 0; i < 7; i++)
+				{
+					itemSlots[i] = 0;
+				}
+				cost = 0; health = 0; healthRegen = 0; mana = 0; manaRegen = 0; 
+				attackDamage = 0; attackSpeed = 0; critStrike = 0; lifeSteal = 0;
+				abilityPower = 0; cooldownReduction = 0; spellVamp = 0; 
+				armor = 0; magicResist = 0; armorPen = 0; magicPen = 0; 
+				moveSpeed = 0; moveSpeedPercent = 0; itemMax = 0; lastItemId = 0;
+				
+				displayStats();
 			}
-		}
-		switch(slotNumber)
+		});
+	}
+	
+	public void deleteItemImage(int itemId)
+	{
+		switch(itemId)
 		{
 		case 0:
 			ImageView slot1 = (ImageView)this.findViewById(R.id.item1);
@@ -497,6 +517,20 @@ public class MainActivity extends Activity {
 		}
 	}
 	
+	public void deleteNewItem(int buttonId)
+	{
+		int slotNumber = 6;
+		for(int i = 0; i < 7; i++)
+		{
+			if(itemSlots[i] == 0 && i > 0)
+			{
+				slotNumber = i - 1;
+				break;
+			}
+		}
+		deleteItemImage(slotNumber);
+	}
+	
 	public void displayNewItem(int buttonId)
 	{
 		int slotNumber = 0;
@@ -504,17 +538,38 @@ public class MainActivity extends Activity {
 		{
 			if(itemSlots[i] == 0)
 			{
-				slotNumber = itemSlots[i];
+				slotNumber = i;
 				break;
 			}
 		}
-		ImageView itemSlot = (ImageView)this.findViewById(R.id.item1);
-//		switch(buttonId)
-//		{
-//		case 0:
-//			itemSlot.setImageResource(R.drawable.image0);
-//		}
-		itemSlot.setImageResource(R.drawable.image0);
+		
+		switch(slotNumber)
+		{
+		case 0:
+			ImageView itemSlot1 = (ImageView)this.findViewById(R.id.item1);
+			getItemImage(itemSlot1, buttonId);
+			break;
+		case 1:
+			ImageView itemSlot2 = (ImageView)this.findViewById(R.id.item2);
+			getItemImage(itemSlot2, buttonId);
+			break;
+		case 2:
+			ImageView itemSlot3 = (ImageView)this.findViewById(R.id.item3);
+			getItemImage(itemSlot3, buttonId);
+			break;
+		case 3:
+			ImageView itemSlot4 = (ImageView)this.findViewById(R.id.item4);
+			getItemImage(itemSlot4, buttonId);
+			break;
+		case 4:
+			ImageView itemSlot5 = (ImageView)this.findViewById(R.id.item5);
+			getItemImage(itemSlot5, buttonId);
+			break;
+		case 5:
+			ImageView itemSlot6 = (ImageView)this.findViewById(R.id.item6);
+			getItemImage(itemSlot6, buttonId);
+			break;
+		}
 	}
 	
 	public void displayStats()
@@ -575,8 +630,8 @@ public class MainActivity extends Activity {
 		
 		TextView moveSpeedView = (TextView)this.findViewById(R.id.moveSpeed);
 		double moveSpeedDecimal = moveSpeedPercent / 100;
-		moveSpeedView.setText("Movement Speed:  " + moveSpeedDecimal + 
-				"((Base champion movement speed) + " + moveSpeed + ")");
+		moveSpeedView.setText("Movement Speed:  (Base champion movement speed) + " + 
+		moveSpeedDecimal + "((Base champion movement speed) + " + moveSpeed + ")");
 	}
 	
 	public void getItemStats(int item, int[] stats)
@@ -1361,6 +1416,403 @@ public class MainActivity extends Activity {
 		}
 	}
 	
+	public void getItemImage(ImageView slot, int itemId)
+	{
+		switch(itemId)
+		{
+		case 0:
+			slot.setImageResource(R.drawable.image0);
+			break;
+		case 1:
+			slot.setImageResource(R.drawable.image1);
+			break;
+		case 2:
+			slot.setImageResource(R.drawable.image2);
+			break;
+		case 3:
+			slot.setImageResource(R.drawable.image3);
+			break;
+		case 4:
+			slot.setImageResource(R.drawable.image4);
+			break;
+		case 5:
+			slot.setImageResource(R.drawable.image5);
+			break;
+		case 6:
+			slot.setImageResource(R.drawable.image6);
+			break;
+		case 7:
+			slot.setImageResource(R.drawable.image7);
+			break;
+		case 8:
+			slot.setImageResource(R.drawable.image8);
+			break;
+		case 9:
+			slot.setImageResource(R.drawable.image9);
+			break;
+		case 10:
+			slot.setImageResource(R.drawable.image10);
+			break;
+		case 11:
+			slot.setImageResource(R.drawable.image11);
+			break;
+		case 12:
+			slot.setImageResource(R.drawable.image12);
+			break;
+		case 13:
+			slot.setImageResource(R.drawable.image13);
+			break;
+		case 14:
+			slot.setImageResource(R.drawable.image14);
+			break;
+		case 15:
+			slot.setImageResource(R.drawable.image15);
+			break;
+		case 16:
+			slot.setImageResource(R.drawable.image16);
+			break;
+		case 17:
+			slot.setImageResource(R.drawable.image17);
+			break;
+		case 18:
+			slot.setImageResource(R.drawable.image18);
+			break;
+		case 19:
+			slot.setImageResource(R.drawable.image19);
+			break;
+		case 20:
+			slot.setImageResource(R.drawable.image20);
+			break;
+		case 21:
+			slot.setImageResource(R.drawable.image21);
+			break;
+		case 22:
+			slot.setImageResource(R.drawable.image22);
+			break;
+		case 23:
+			slot.setImageResource(R.drawable.image23);
+			break;
+		case 24:
+			slot.setImageResource(R.drawable.image24);
+			break;
+		case 25:
+			slot.setImageResource(R.drawable.image25);
+			break;
+		case 26:
+			slot.setImageResource(R.drawable.image26);
+			break;
+		case 27:
+			slot.setImageResource(R.drawable.image27);
+			break;
+		case 28:
+			slot.setImageResource(R.drawable.image28);
+			break;
+		case 29:
+			slot.setImageResource(R.drawable.image29);
+			break;
+		case 30:
+			slot.setImageResource(R.drawable.image30);
+			break;
+		case 31:
+			slot.setImageResource(R.drawable.image31);
+			break;
+		case 32:
+			slot.setImageResource(R.drawable.image32);
+			break;
+		case 33:
+			slot.setImageResource(R.drawable.image33);
+			break;
+		case 34:
+			slot.setImageResource(R.drawable.image34);
+			break;
+		case 35:
+			slot.setImageResource(R.drawable.image35);
+			break;
+		case 36:
+			slot.setImageResource(R.drawable.image36);
+			break;
+		case 37:
+			slot.setImageResource(R.drawable.image37);
+			break;
+		case 38:
+			slot.setImageResource(R.drawable.image38);
+			break;
+		case 39:
+			slot.setImageResource(R.drawable.image39);
+			break;
+		case 40:
+			slot.setImageResource(R.drawable.image40);
+			break;
+		case 41:
+			slot.setImageResource(R.drawable.image41);
+			break;
+		case 42:
+			slot.setImageResource(R.drawable.image42);
+			break;
+		case 43:
+			slot.setImageResource(R.drawable.image43);
+			break;
+		case 44:
+			slot.setImageResource(R.drawable.image44);
+			break;
+		case 45:
+			slot.setImageResource(R.drawable.image45);
+			break;
+		case 46:
+			slot.setImageResource(R.drawable.image46);
+			break;
+		case 47:
+			slot.setImageResource(R.drawable.image47);
+			break;
+		case 48:
+			slot.setImageResource(R.drawable.image48);
+			break;
+		case 49:
+			slot.setImageResource(R.drawable.image49);
+			break;
+		case 50:
+			slot.setImageResource(R.drawable.image50);
+			break;
+		case 51:
+			slot.setImageResource(R.drawable.image51);
+			break;
+		case 52:
+			slot.setImageResource(R.drawable.image52);
+			break;
+		case 53:
+			slot.setImageResource(R.drawable.image53);
+			break;
+		case 54:
+			slot.setImageResource(R.drawable.image54);
+			break;
+		case 55:
+			slot.setImageResource(R.drawable.image55);
+			break;
+		case 56:
+			slot.setImageResource(R.drawable.image56);
+			break;
+		case 57:
+			slot.setImageResource(R.drawable.image57);
+			break;
+		case 58:
+			slot.setImageResource(R.drawable.image58);
+			break;
+		case 59:
+			slot.setImageResource(R.drawable.image59);
+			break;
+		case 60:
+			slot.setImageResource(R.drawable.image60);
+			break;
+		case 61:
+			slot.setImageResource(R.drawable.image61);
+			break;
+		case 62:
+			slot.setImageResource(R.drawable.image62);
+			break;
+		case 63:
+			slot.setImageResource(R.drawable.image63);
+			break;
+		case 64:
+			slot.setImageResource(R.drawable.image64);
+			break;
+		case 65:
+			slot.setImageResource(R.drawable.image65);
+			break;
+		case 66:
+			slot.setImageResource(R.drawable.image66);
+			break;
+		case 67:
+			slot.setImageResource(R.drawable.image67);
+			break;
+		case 68:
+			slot.setImageResource(R.drawable.image68);
+			break;
+		case 69:
+			slot.setImageResource(R.drawable.image69);
+			break;
+		case 70:
+			slot.setImageResource(R.drawable.image70);
+			break;
+		case 71:
+			slot.setImageResource(R.drawable.image71);
+			break;
+		case 72:
+			slot.setImageResource(R.drawable.image72);
+			break;
+		case 73:
+			slot.setImageResource(R.drawable.image73);
+			break;
+		case 74:
+			slot.setImageResource(R.drawable.image74);
+			break;
+		case 75:
+			slot.setImageResource(R.drawable.image75);
+			break;
+		case 76:
+			slot.setImageResource(R.drawable.image76);
+			break;
+		case 77:
+			slot.setImageResource(R.drawable.image77);
+			break;
+		case 78:
+			slot.setImageResource(R.drawable.image78);
+			break;
+		case 79:
+			slot.setImageResource(R.drawable.image79);
+			break;
+		case 80:
+			slot.setImageResource(R.drawable.image80);
+			break;
+		case 81:
+			slot.setImageResource(R.drawable.image81);
+			break;
+		case 82:
+			slot.setImageResource(R.drawable.image82);
+			break;
+		case 83:
+			slot.setImageResource(R.drawable.image83);
+			break;
+		case 84:
+			slot.setImageResource(R.drawable.image84);
+			break;
+		case 85:
+			slot.setImageResource(R.drawable.image85);
+			break;
+		case 86:
+			slot.setImageResource(R.drawable.image86);
+			break;
+		case 87:
+			slot.setImageResource(R.drawable.image87);
+			break;
+		case 88:
+			slot.setImageResource(R.drawable.image88);
+			break;
+		case 89:
+			slot.setImageResource(R.drawable.image89);
+			break;
+		case 90:
+			slot.setImageResource(R.drawable.image90);
+			break;
+		case 91:
+			slot.setImageResource(R.drawable.image91);
+			break;
+		case 92:
+			slot.setImageResource(R.drawable.image92);
+			break;
+		case 93:
+			slot.setImageResource(R.drawable.image93);
+			break;
+		case 94:
+			slot.setImageResource(R.drawable.image94);
+			break;
+		case 95:
+			slot.setImageResource(R.drawable.image95);
+			break;
+		case 96:
+			slot.setImageResource(R.drawable.image96);
+			break;
+		case 97:
+			slot.setImageResource(R.drawable.image97);
+			break;
+		case 98:
+			slot.setImageResource(R.drawable.image98);
+			break;
+		case 99:
+			slot.setImageResource(R.drawable.image99);
+			break;
+		case 100:
+			slot.setImageResource(R.drawable.image100);
+			break;
+		case 101:
+			slot.setImageResource(R.drawable.image101);
+			break;
+		case 102:
+			slot.setImageResource(R.drawable.image102);
+			break;
+		case 103:
+			slot.setImageResource(R.drawable.image103);
+			break;
+		case 104:
+			slot.setImageResource(R.drawable.image104);
+			break;
+		case 105:
+			slot.setImageResource(R.drawable.image105);
+			break;
+		case 106:
+			slot.setImageResource(R.drawable.image106);
+			break;
+		case 107:
+			slot.setImageResource(R.drawable.image107);
+			break;
+		case 108:
+			slot.setImageResource(R.drawable.image108);
+			break;
+		case 109:
+			slot.setImageResource(R.drawable.image109);
+			break;
+		case 110:
+			slot.setImageResource(R.drawable.image110);
+			break;
+		case 111:
+			slot.setImageResource(R.drawable.image111);
+			break;
+		case 112:
+			slot.setImageResource(R.drawable.image112);
+			break;
+		case 113:
+			slot.setImageResource(R.drawable.image113);
+			break;
+		case 114:
+			slot.setImageResource(R.drawable.image114);
+			break;
+		case 115:
+			slot.setImageResource(R.drawable.image115);
+			break;
+		case 116:
+			slot.setImageResource(R.drawable.image116);
+			break;
+		case 117:
+			slot.setImageResource(R.drawable.image117);
+			break;
+		case 118:
+			slot.setImageResource(R.drawable.image118);
+			break;
+		case 119:
+			slot.setImageResource(R.drawable.image119);
+			break;
+		case 120:
+			slot.setImageResource(R.drawable.image120);
+			break;
+		case 121:
+			slot.setImageResource(R.drawable.image121);
+			break;
+		case 122:
+			slot.setImageResource(R.drawable.image122);
+			break;
+		case 123:
+			slot.setImageResource(R.drawable.image123);
+			break;
+		case 124:
+			slot.setImageResource(R.drawable.image124);
+			break;
+		case 125:
+			slot.setImageResource(R.drawable.image125);
+			break;
+		case 126:
+			slot.setImageResource(R.drawable.image126);
+			break;
+		case 127:
+			slot.setImageResource(R.drawable.image127);
+			break;
+		case 128:
+			slot.setImageResource(R.drawable.image128);
+			break;
+		case 129:
+			slot.setImageResource(R.drawable.image129);
+			break;
+		}
+	}
+	
 	public void undoListener()
 	{
 		Button undo = (Button)this.findViewById(R.id.undo);
@@ -1371,13 +1823,6 @@ public class MainActivity extends Activity {
 			{
 				if(itemMax > 0)
 				{
-					for(int i = 0; i < 7; i++)
-					{
-						if(itemSlots[i] == 0 && i != 0)
-						{
-							itemSlots[i - 1] = lastItemId;
-						}
-					}
 					for(int i = 0; i < 18; i++)
 						statsArray[i] = 0;
 					getItemStats(lastItemId, statsArray);
@@ -1402,6 +1847,16 @@ public class MainActivity extends Activity {
 					displayStats();
 					deleteNewItem(lastItemId);
 					itemMax--;
+					for(int i = 0; i < 7; i++)
+					{
+						if(itemSlots[i] == 0 && i > 0)
+						{
+							if(i > 1)
+								lastItemId = itemSlots[i - 2] - 1;
+							itemSlots[i - 1] = 0;
+							break;
+						}
+					}
 				}
 			}
 		});
@@ -1417,7 +1872,7 @@ public class MainActivity extends Activity {
 				for(int i = 0; i < 18; i++)
 					statsArray[i] = 0;
 				lastItemId = v.getId();
-				getItemStats(v.getId(), statsArray);
+				getItemStats(lastItemId, statsArray);
 				cost += statsArray[0];
 				health += statsArray[1];
 				healthRegen += statsArray[2];
@@ -1438,19 +1893,21 @@ public class MainActivity extends Activity {
 				moveSpeedPercent += statsArray[17];
 				
 				displayStats();
-				displayNewItem(v.getId());
+				displayNewItem(lastItemId);
 				itemMax++;
 				for(int i = 0; i < 6; i++)
 				{
 					if(itemSlots[i] == 0)
 					{
-						itemSlots[i] = v.getId();
+						itemSlots[i] = lastItemId + 1;
 						break;
 					}
 				}
 			}
 		}
 	};
+	
+	
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {

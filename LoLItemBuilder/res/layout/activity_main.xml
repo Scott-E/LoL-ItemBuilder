@@ -24,30 +24,22 @@
 	            android:id="@+id/item1"
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
-	            android:src="@drawable/image1" >
+	            android:src="@drawable/empty" >
 	        </ImageView>
 	        
 	        <ImageView
 	            android:id="@+id/item2"
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
-	            android:src="@drawable/image1" >
+	            android:src="@drawable/empty" >
 	        </ImageView>
 	        
 	        <ImageView
 	            android:id="@+id/item3"
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
-	            android:src="@drawable/image1" >
+	            android:src="@drawable/empty" >
 	        </ImageView>
-	        
-	        <Button
-	            android:id="@+id/undo"
-	            android:layout_width="wrap_content"
-	            android:layout_height="wrap_content"
-	            android:onClick="undoListener"
-	            android:text="@string/undo" >
-	        </Button>
 	        
 	    </LinearLayout>
 	    
@@ -61,21 +53,21 @@
 	            android:id="@+id/item4"
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
-	            android:src="@drawable/image1" >
+	            android:src="@drawable/empty" >
 	        </ImageView>
 	        
 	        <ImageView
 	            android:id="@+id/item5"
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
-	            android:src="@drawable/image1" >
+	            android:src="@drawable/empty" >
 	        </ImageView>
 	        
 	        <ImageView
 	            android:id="@+id/item6"
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
-	            android:src="@drawable/image1" >
+	            android:src="@drawable/empty" >
 	        </ImageView>
 	        
 	    </LinearLayout>
@@ -203,6 +195,30 @@
 		        android:layout_height="wrap_content"
 		        android:text="@string/moveSpeedString" >
 		    </TextView>
+		    
+		    <LinearLayout
+		        android:id="@+id/resetButtons"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:orientation="horizontal" >
+		        
+		        <Button
+		            android:id="@+id/undo"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:onClick="undoListener"
+		            android:text="@string/undo" >
+		        </Button>
+		        
+		        <Button
+		            android:id="@+id/clear"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:onClick="clearListener"
+		            android:text="@string/clear" >
+		        </Button>
+		        
+		    </LinearLayout>
 		    
 		</LinearLayout>
 		
