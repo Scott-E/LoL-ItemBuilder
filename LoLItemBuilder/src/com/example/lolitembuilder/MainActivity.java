@@ -32,6 +32,7 @@ public class MainActivity extends Activity {
 			moveSpeed = 0, moveSpeedPercent = 0, itemMax = 0, lastItemId = 0;
 	int[] statsArray = new int[18];
 	int[] itemSlots = new int[]{0, 0, 0, 0, 0, 0, 0};
+	int[] shoeBox = new int[]{0, 0, 0, 0, 0, 0, 0};
 	
 	private void buildGrid()
 	{
@@ -474,7 +475,9 @@ public class MainActivity extends Activity {
 				for(int i = 0; i < 7; i++)
 				{
 					itemSlots[i] = 0;
+					shoeBox[i] = 0;
 				}
+				
 				cost = 0; health = 0; healthRegen = 0; mana = 0; manaRegen = 0; 
 				attackDamage = 0; attackSpeed = 0; critStrike = 0; lifeSteal = 0;
 				abilityPower = 0; cooldownReduction = 0; spellVamp = 0; 
@@ -1840,6 +1843,23 @@ public class MainActivity extends Activity {
 					magicResist -= statsArray[13];
 					armorPen -= statsArray[14];
 					magicPen -= statsArray[15];
+					if(statsArray[16] != 0)
+					{
+						for(int i = 0; i < 7; i++)
+						{
+							if(shoeBox[i] == 0 && i > 0)
+							{
+								shoeBox[i - 1] = 0;
+								break;
+							}
+						}
+						moveSpeed = 0;
+						for(int i = 0; i < 6; i++)
+						{
+							if(moveSpeed < shoeBox[i])
+								moveSpeed = shoeBox[i];
+						}
+					}
 					moveSpeedPercent -= statsArray[17];
 					
 					displayStats();
@@ -1887,7 +1907,22 @@ public class MainActivity extends Activity {
 				magicResist += statsArray[13];
 				armorPen += statsArray[14];
 				magicPen += statsArray[15];
-				moveSpeed = statsArray[16];
+				if(statsArray[16] != 0)
+				{
+					for(int i = 0; i < 7; i++)
+					{
+						if(shoeBox[i] == 0)
+						{
+							shoeBox[i] = statsArray[16];
+							break;
+						}
+					}
+					for(int i = 0; i < 6; i++)
+					{
+						if(moveSpeed < shoeBox[i])
+							moveSpeed = shoeBox[i];
+					}
+				}
 				moveSpeedPercent += statsArray[17];
 				
 				displayStats();
