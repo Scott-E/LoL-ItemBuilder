@@ -23,7 +23,7 @@
     <string name="armorPenString">Armor Penetration:  0</string>
     <string name="magicPenString">Magic Penetration:  0</string>
     <string name="moveSpeedString">
-        Movement Speed:  (Base champion movement speed) + 0.0((Base champion movement speed) + 0)
+        Movement Speed Increase:  0 + 0%
     </string>
 
 </resources>

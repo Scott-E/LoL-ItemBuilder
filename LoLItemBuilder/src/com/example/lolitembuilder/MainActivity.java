@@ -629,9 +629,7 @@ public class MainActivity extends Activity {
 		magicPenView.setText("Magic Penetration:  " + magicPen);
 		
 		TextView moveSpeedView = (TextView)this.findViewById(R.id.moveSpeed);
-		double moveSpeedDecimal = moveSpeedPercent / 100;
-		moveSpeedView.setText("Movement Speed:  (Base champion movement speed) + " + 
-		moveSpeedDecimal + "((Base champion movement speed) + " + moveSpeed + ")");
+		moveSpeedView.setText("Movement Speed Increase:  " + moveSpeed + " + " + moveSpeedPercent + "%");
 	}
 	
 	public void getItemStats(int item, int[] stats)
