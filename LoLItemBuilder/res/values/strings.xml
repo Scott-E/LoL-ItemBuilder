@@ -6,6 +6,7 @@
     <string name="hello_world">Hello world!</string>
     <string name="undo">Undo</string>
     <string name="clear">Clear</string>
+    <string name="desc">ImageView</string>
     
     <string name="costString">Cost:  0</string>
     <string name="healthString">Health:  0</string>
